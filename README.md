@@ -1,19 +1,27 @@
-# Tauri + React + Typescript
+# Kleio
 
-This template should help get you started developing with Tauri, React, and Typescript using Bun.
+> A cross-platform GUI for [Unix `pass`](https://www.passwordstore.org/) — the standard Unix password manager.
 
-## Development
+Kleio is a modern, friendly interface for your existing `pass` password store. It runs on desktop and mobile, built with [Tauri 2](https://v2.tauri.app/), React, and Tailwind CSS.
 
-- `bun install`
-- `bun run dev`
-- `bun run build`
+## ✨ Features
 
-The project now uses Bun for bundling and previewing instead of Vite.
+- 🔐 **Uses your existing `pass` store** — reads `~/.password-store`
+- 🔑 **GPG-powered** — seamlessly works with your current GPG keys
+- 📱 **Cross-platform** — Windows, macOS, Linux, iOS, Android
+- ⚡ **Native performance** — Rust core, no heavyweight Electron runtime
+- 🎨 **Beautiful UI** — clean, modern interface with Tailwind CSS
 
-## Tailwind CSS
+> **Status:** Early development. The current codebase is a Tauri + React starter; password-store functionality is coming soon.
 
-Tailwind CSS is integrated using the Tailwind CLI. The app styles are built from `src/styles.css` into `dist/main.css`, and the generated CSS is loaded by `index.html`.
+## 🚀 Getting Started
 
-## Recommended IDE Setup
+### Prerequisites
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+- [Bun](https://bun.sh/)
+- [Rust](https://www.rust-lang.org/tools/install)
+- [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/)
+- `pass` and `gpg` installed on your system
+
+### Development
+
