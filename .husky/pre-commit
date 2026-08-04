@@ -1,0 +1,18 @@
+#!/bin/sh
+# Secrets
+if ! command -v betterleaks >/dev/null 2>&1; then
+    echo "Error: betterleaks is not installed." >&2
+    exit 1
+fi
+
+betterleaks protect --staged --verbose
+
+# TypeScript
+if git diff --cached --name-only | grep -q '\.tsx$'; then
+  bun run tsc --noEmit
+fi
+
+# Rust/Tauri
+if git diff --cached --name-only | grep -q '\.rs$'; then
+  cd src-tauri && cargo clippy -- -D warnings
+fi
