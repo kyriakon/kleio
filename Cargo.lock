@@ -568,10 +568,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "61803da095bee82a81bb1a452ecc25d3b2f1416d1897eb86430c6159ef717c17"
 
 [[package]]
-name = "crypto"
-version = "0.1.0"
-
-[[package]]
 name = "crypto-common"
 version = "0.1.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1281,10 +1277,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "git"
-version = "0.1.0"
-
-[[package]]
 name = "glib"
 version = "0.18.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1855,6 +1847,18 @@ dependencies = [
  "tauri-build",
  "tauri-plugin-opener",
 ]
+
+[[package]]
+name = "kleio-crypto"
+version = "0.1.0"
+
+[[package]]
+name = "kleio-git"
+version = "0.1.0"
+
+[[package]]
+name = "kleio-store"
+version = "0.1.0"
 
 [[package]]
 name = "libappindicator"
@@ -3122,10 +3126,6 @@ name = "stable_deref_trait"
 version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6ce2be8dc25455e1f91df71bfa12ad37d7af1092ae736f3a6cd0e37bc7810596"
-
-[[package]]
-name = "store"
-version = "0.1.0"
 
 [[package]]
 name = "string_cache"
