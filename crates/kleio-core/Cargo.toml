@@ -1,6 +1,11 @@
 [package]
 name = "kleio-core"
-version = "0.1.0"
-edition = "2024"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
 
 [dependencies]
+kleio-crypto.workspace = true
+kleio-store.workspace = true
+kleio-git.workspace = true

@@ -1841,6 +1841,7 @@ dependencies = [
 name = "kleio"
 version = "0.1.0"
 dependencies = [
+ "kleio-core",
  "serde",
  "serde_json",
  "tauri",
@@ -1851,6 +1852,11 @@ dependencies = [
 [[package]]
 name = "kleio-core"
 version = "0.1.0"
+dependencies = [
+ "kleio-crypto",
+ "kleio-git",
+ "kleio-store",
+]
 
 [[package]]
 name = "kleio-crypto"
@@ -1859,6 +1865,9 @@ version = "0.1.0"
 [[package]]
 name = "kleio-git"
 version = "0.1.0"
+dependencies = [
+ "kleio-crypto",
+]
 
 [[package]]
 name = "kleio-store"
