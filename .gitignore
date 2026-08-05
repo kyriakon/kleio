@@ -48,4 +48,8 @@ Thumbs.db
 *.sln
 *.sw?
 
+
+# Added by cargo
+
+/target
 .aider*
