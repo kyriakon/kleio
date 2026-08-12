@@ -4,5 +4,6 @@ members = [
     "src-tauri",
     "crates/kleio-crypto",
     "crates/kleio-store",
-    "crates/kleio-git", "kleio-core",
+    "crates/kleio-git", 
+    "crates/kleio-core",
 ]
