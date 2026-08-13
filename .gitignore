@@ -1,7 +1,7 @@
 # Dependencies
 node_modules/
 
-# Vite / Frontend Build Outputs
+# Frontend build outputs
 dist/
 dist-isolation/
 *.local
@@ -52,3 +52,4 @@ Thumbs.db
 # Added by cargo
 
 /target
+.aider*
