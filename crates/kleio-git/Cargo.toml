@@ -7,3 +7,5 @@ authors.workspace = true
 
 [dependencies]
 kleio-crypto.workspace = true
+
+[lints] workspace = true
