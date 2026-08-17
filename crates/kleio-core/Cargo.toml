@@ -10,4 +10,5 @@ kleio-crypto.workspace = true
 kleio-store.workspace = true
 kleio-git.workspace = true
 
-[lints] workspace = true
+[lints]
+workspace = true

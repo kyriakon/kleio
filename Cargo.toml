@@ -23,3 +23,10 @@ kleio-core = { path = "crates/kleio-core" }
 kleio-crypto = { path = "crates/kleio-crypto" }
 kleio-store = { path = "crates/kleio-store" }
 kleio-git = { path = "crates/kleio-git" }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true
