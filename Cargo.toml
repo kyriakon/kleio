@@ -4,6 +4,16 @@ members = [
     "crates/kleio-core",
     "crates/kleio-crypto",
     "crates/kleio-store",
-    "crates/kleio-git", 
-    "crates/kleio-core",
+    "crates/kleio-git",
 ]
+
+[workspace.package]
+edition = "2021"
+version = "0.1.0"
+authors = ["Jack", "Oliver"]
+license = "MIT"
+
+[workspace.dependencies]
+kleio-crypto = { path = "crates/kleio-crypto" }
+kleio-store = { path = "crates/kleio-store" }
+kleio-git = { path = "crates/kleio-git" }
