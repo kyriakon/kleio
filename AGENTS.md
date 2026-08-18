@@ -7,6 +7,7 @@ React/TypeScript).
 
 Planning docs, specs, and research notes live in this repo under
 `docs/planning/`; the shared vocabulary lives in `CONTEXT.md` at the repo root.
+New machine or contributor? Start with `docs/planning/agent-setup.md`.
 Read `docs/planning/README.md` first for anything beyond a small,
 well-scoped change.
 
