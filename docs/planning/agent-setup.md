@@ -32,13 +32,15 @@ Both personal extensions install from the marketplace repo — no manual file pl
 
 ```sh
 omp plugin marketplace add oliverbrotchie/omp-extensions
-omp plugin install ponytail@omp-extensions caveman@omp-extensions
+omp plugin install ponytail@omp-extensions caveman@omp-extensions guardrails@omp-extensions
 # after upstream/catalog changes:
-omp plugin upgrade ponytail@omp-extensions caveman@omp-extensions
+omp plugin marketplace update omp-extensions
+omp plugin upgrade ponytail@omp-extensions caveman@omp-extensions guardrails@omp-extensions
 ```
 
 - **ponytail** — lazy-senior-dev mode; sourced from upstream [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) (the catalog points at it, nothing vendored).
 - **caveman** — terse-prose mode; vendored in the marketplace repo (`plugins/caveman/`).
+- **guardrails** — blocks agent edits to `AGENTS.md` (write/edit tools *and* bash write-intents); the file is human-owned, so agents must ask you and you edit it directly.
 
 Marketplace layout: `.omp-plugin/marketplace.json` catalog; a plugin ships `package.json` with `"omp": { "extensions": [...] }` for extension modules, or `skills/` for skills. Extensions are TS/JS loaded with Bun; sources must stay in the marketplace repo, never loose files in `~/.omp/agent/extensions/`.
 
