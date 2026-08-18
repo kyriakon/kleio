@@ -42,4 +42,10 @@ Used by `/wayfinder`. The **map** is a single issue with **child** issues as tic
 - **Blocking**: GitHub's **native issue dependencies** — the canonical, UI-visible representation. Add an edge with `gh api --method POST repos/<owner>/<repo>/issues/<child>/dependencies/blocked_by -F issue_id=<blocker-db-id>`, where `<blocker-db-id>` is the blocker's numeric **database id** (`gh api repos/<owner>/<repo>/issues/<n> --jq .id`, _not_ the `#number` or `node_id`). GitHub reports `issue_dependencies_summary.blocked_by` (open blockers only — the live gate). Where dependencies aren't available, fall back to a `Blocked by: #<n>, #<n>` line at the top of the child body. A ticket is unblocked when every blocker is closed.
 - **Frontier query**: list the map's open children (`gh issue list --state open`, scoped to the map's sub-issues / task list), drop any with an open blocker (`issue_dependencies_summary.blocked_by > 0`, or an open issue in the `Blocked by` line) or an assignee; first in map order wins.
 - **Claim**: `gh issue edit <n> --add-assignee @me` — the session's first write.
-- **Resolve**: `gh issue comment <n> --body "<answer>"`, then `gh issue close <n>`, then append a context pointer (gist + link) to the map's Decisions-so-far.
+- **Resolve** (close-checklist — do all of these before ending the session):
+  1. Post the answer as a resolution comment, then close the issue.
+  2. Append the one-line gist to the map's Decisions-so-far (gist + link).
+  3. Graduate any fog the answer made specifiable; clear it from the map's Not yet specified.
+  4. Verify placement: a resolved ticket that walked the route belongs in Decisions-so-far, not Out of scope (Out of scope is for scope boundaries, not route steps).
+  5. Open a PR for the ticket's asset branch (research findings, spike, ADR) — deliverables must reach `main`, not die on branches.
+- **Spike/research branches**: use `git worktree add` so the main checkout stays clean across sessions — no untracked artifacts leaking between branches.
