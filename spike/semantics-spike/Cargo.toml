@@ -1,0 +1,11 @@
+[package]
+name = "semantics-spike"
+version = "0.0.0"
+edition = "2021"
+
+# Standalone throwaway crate — deliberately not a workspace member.
+[workspace]
+
+[dependencies]
+pgp = "0.20"
+rand = "0.8"
