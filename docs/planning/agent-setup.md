@@ -7,24 +7,44 @@ How to stand up this repo's agentic workflow on a new machine — or onboard a n
 - [omp](https://github.com/can1357/oh-my-pi) via Homebrew: `brew install omp`
 - [Bun](https://bun.sh) — required for extension loading: `curl -fsSL https://bun.sh/install | bash`
 
-## 2. Model roles
+## 2. Model configuration
 
-omp routes work through five roles (`~/.omp/agent/config.yml` → `modelRoles`):
+### `~/.omp/agent/models.yml`
 
-| Role | Online (DeepSeek cloud) | Offline (local MLX) |
-|---|---|---|
-| `default` | `deepseek/deepseek-v4-flash` | `mlx-main/...Qwen2.5-Coder-7B` |
-| `smol` | `mlx-smol/...MiniCPM5-1B` | same |
-| `commit` | `mlx-smol/...MiniCPM5-1B` | same |
-| `slow` | `deepseek/deepseek-v4-pro` | Qwen 7B |
-| `plan` | `deepseek/deepseek-v4-pro` | Qwen 7B |
+```yaml
+providers:
+  deepseek:
+    baseUrl: "https://api.deepseek.com/v1"
+    api: "openai-completions"
+    models:
+      - id: "deepseek-v4-flash"
+        name: "DeepSeek v4 Flash"
+        reasoningEffort: "auto"
+      - id: "deepseek-v4-pro"
+        name: "DeepSeek v4 Pro"
+        reasoningEffort: "auto"
+```
 
-- `default` is the everyday model; `slow`/`plan` are for deep reasoning (wayfinder grilling, ADR drafting, code review). DeepSeek's supported ids are `deepseek-v4-pro` and `deepseek-v4-flash` — probe with the chat-completions endpoint; `/v1/models` is gated.
-- **Secrets rule: API keys live in the environment only** — `export DEEPSEEK_API_KEY=...` in `~/.zshrc` (or `~/.omp/agent/.env`). omp resolves provider keys from env natively (`getEnvApiKey`). Never put a key in `models.yml`, `config.yml`, or any committed file. `models.template.yml` must stay key-free; the launch script only copies it.
+**No `apiKey` line.** omp resolves `DEEPSEEK_API_KEY` from the environment natively — export it in `~/.zshrc` (or `~/.omp/agent/.env`). Never put a key in a config file.
 
-### Online/offline swap
+### `~/.omp/agent/config.yml`
 
-`~/.bin/start-omp.sh` (aliased as `omp` in `~/.zshrc`) is the launcher: it offers online (DeepSeek + local smol) or offline (local only) mode, copies `config.online.yml` / `config.offline.yml` → `config.yml`, copies `models.template.yml` → `models.yml`, starts the MLX servers (`mlx_lm.server`, ports 11435/11436), then runs omp. Extensions/skills are unchanged between modes.
+```yaml
+setupWizard: false
+
+startup:
+  setupWizard: false
+
+modelRoles:
+  default: "deepseek/deepseek-v4-flash"
+  smol: "deepseek/deepseek-v4-flash"
+  commit: "deepseek/deepseek-v4-flash"
+  slow: "deepseek/deepseek-v4-pro"
+  plan: "deepseek/deepseek-v4-pro"
+```
+
+- `default` is the everyday model; `smol`/`commit` are the cheap quick jobs; `slow`/`plan` are the deep-reasoning roles (wayfinder grilling, ADR drafting, code review) on the pro tier.
+- DeepSeek's supported ids are `deepseek-v4-pro` and `deepseek-v4-flash` — probe with the chat-completions endpoint; `/v1/models` is gated.
 
 ## 3. Extensions (marketplace)
 
