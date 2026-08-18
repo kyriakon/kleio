@@ -7,8 +7,6 @@ durable) and which are working material (in progress, expect it to be messier).
 ## Layout
 
 - `proposal/` — the current project proposal (architecture, MVP scope, team & schedule).
-- `glossary.md` — shared project vocabulary, kept short and current. Terms that affect
-  code semantics are also mirrored in `AGENTS.md`.
 - `research/` — raw investigation notes and `grill with docs` session output. Reference
   material, not authoritative — don't treat it as settled just because it's written
   down.

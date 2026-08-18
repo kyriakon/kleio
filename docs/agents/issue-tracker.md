@@ -45,7 +45,7 @@ Used by `/wayfinder`. The **map** is a single issue with **child** issues as tic
 - **Resolve** (close-checklist — do all of these before ending the session):
   1. Post the answer as a resolution comment, then close the issue.
   2. Append the one-line gist to the map's Decisions-so-far (gist + link).
-  3. Graduate any fog the answer made specifiable; clear it from the map's Not yet specified.
+  3. Graduate any fog the answer made specifiable; clear it from the map's Not yet specified. Capture any newly-resolved domain terms in `CONTEXT.md`.
   4. Verify placement: a resolved ticket that walked the route belongs in Decisions-so-far, not Out of scope (Out of scope is for scope boundaries, not route steps).
   5. Open a PR for the ticket's asset branch (research findings, spike, ADR) — deliverables must reach `main`, not die on branches.
 - **Spike/research branches**: use `git worktree add` so the main checkout stays clean across sessions — no untracked artifacts leaking between branches.

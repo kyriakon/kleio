@@ -5,8 +5,9 @@ React/TypeScript).
 
 ## Orientation
 
-Planning docs, specs, research notes, and the project glossary live in this repo under
-`docs/planning/`. Read `docs/planning/README.md` first for anything beyond a small,
+Planning docs, specs, and research notes live in this repo under
+`docs/planning/`; the shared vocabulary lives in `CONTEXT.md` at the repo root.
+Read `docs/planning/README.md` first for anything beyond a small,
 well-scoped change.
 
 Finalized architecture decisions that matter for how code is written live under
@@ -15,7 +16,7 @@ be written down.
 
 ## Shared vocabulary
 
-Full glossary: `docs/planning/glossary.md`. The two terms most likely to matter while
+Full glossary: `CONTEXT.md`. The two terms most likely to matter while
 writing code:
 
 - **Re-keying vs. rotation**: re-keying = removing a signer's key from `.gpg-id` and
@@ -92,4 +93,4 @@ Five canonical triage labels, strings equal to their names: `needs-triage`, `nee
 
 ### Domain docs
 
-Single-context. ADRs live in `docs/decisions/`, shared vocabulary in `docs/planning/glossary.md`. See `docs/agents/domain.md`.
+Single-context. ADRs live in `docs/decisions/`, shared vocabulary in `CONTEXT.md`. See `docs/agents/domain.md`.
