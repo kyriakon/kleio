@@ -81,7 +81,7 @@ pub fn build_character_pool(
 mod tests {
     use super::*;
 
-    #[test] // make test for the rest of the configs. Please look at the below example for guidance. IS EMPTY AND AMBIHUOUS ARE DIFFERENT BEASTS. thinking cap. on.
+    #[test] 
     fn character_pool_lower_case() {
         let config = PasswordGeneratorConfig {
             include_lowercase:true,
