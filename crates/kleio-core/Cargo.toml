@@ -9,6 +9,7 @@ authors.workspace = true
 kleio-crypto.workspace = true
 kleio-store.workspace = true
 kleio-git.workspace = true
+rand = "0.8"
 
 [lints]
 workspace = true
