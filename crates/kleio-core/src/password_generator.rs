@@ -1,3 +1,5 @@
+use rand::Rng;
+use rand::rngs::OsRng;
 use std::fmt;
 
 #[derive(Debug, Clone)]
@@ -90,6 +92,35 @@ pub fn build_character_pool(
         pool.retain(|c| !AMBIGUOUS_CHARS.contains(c));
     }
     Ok(pool)
+}
+
+pub trait PasswordGenerator {
+    fn generate(&self, config: &PasswordGeneratorConfig) -> Result<String, PasswordGeneratorError>;
+}
+
+pub struct RandomPasswordGenerator;
+
+impl PasswordGenerator for RandomPasswordGenerator {
+    fn generate(&self, config: &PasswordGeneratorConfig) -> Result<String, PasswordGeneratorError> {
+        const MINUMUM_LENGTH: usize = 8;
+
+        if config.length < MINUMUM_LENGTH {
+            return Err(PasswordGeneratorError::LengthTooShort {
+                minimum: MINUMUM_LENGTH,
+            });
+        }
+
+        let pool = build_character_pool(config)?;
+
+        let mut rng = OsRng;
+        let mut password = String::with_capacity(config.length);
+
+        for _ in 0..config.length {
+            let index = rng.gen_range(0..pool.len());
+            password.push(pool[index]);
+        }
+        Ok(password)
+    }
 }
 
 #[cfg(test)]
